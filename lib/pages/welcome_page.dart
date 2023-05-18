@@ -22,11 +22,15 @@ class _WelcomePageState extends State<WelcomePage> {
     "welcome-three".toPng(),
   ];
 
+  PageController _controller = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: PageView.builder(
+          
+          controller: _controller,
           itemCount: 3,
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
@@ -88,7 +92,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         )
                       ],
                     ),
-
+            
                     /// Dots column
                     Column(
                       children: List.generate(

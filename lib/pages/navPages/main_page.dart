@@ -27,11 +27,21 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: Icon(Icons.menu,color: AppColors.mainColor),
+        leading: Icon(Icons.menu, color: AppColors.mainColor),
+        actions: [
+          Container(
+            margin: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: AppColors.buttonBackground,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            width: 50,
+            child: Icon(Icons.person, color: AppColors.mainColor),
+          )
+        ],
       ),
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
-
         currentIndex: navIndex,
         onTap: (value) => setState(() {
           navIndex = value;
