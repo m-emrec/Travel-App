@@ -29,12 +29,16 @@ class RespButton extends StatelessWidget {
         child: isShort
             ? Image.asset("button-one".toPng())
             : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    text ?? "",
-                    style: const TextStyle(
-                      color: Colors.white,
+                  Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: width! *0.1),
+                    child: Text(
+                      text ?? "",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Image.asset("button-one".toPng()),

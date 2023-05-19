@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/extensions/img_extendison.dart';
+import 'package:travel_app/pages/detail_page.dart';
 
 class PlacesTabView extends StatelessWidget {
   const PlacesTabView({super.key});
@@ -9,17 +10,20 @@ class PlacesTabView extends StatelessWidget {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: 3,
-      itemBuilder: (_, int index) => Container(
-        margin: const EdgeInsets.only(right: 8.0, top: 16.0),
-        height: 250,
-        width: 180,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          image: DecorationImage(
-            image: AssetImage(
-              "mountain".toJpeg(),
+      itemBuilder: (_, int index) => GestureDetector(
+        onTap: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => const DetailPage())),
+        child: Container(
+          margin: const EdgeInsets.only(right: 8.0, top: 16.0),
+          width: MediaQuery.of(context).size.width * 0.5,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            image: DecorationImage(
+              image: AssetImage(
+                "mountain".toJpeg(),
+              ),
+              fit: BoxFit.cover,
             ),
-            fit: BoxFit.cover,
           ),
         ),
       ),

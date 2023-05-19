@@ -16,36 +16,34 @@ class ExploreMoreItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 80,
-      width: double.infinity,
-      child: ListView.builder(
-        itemExtent: 100,
-        scrollDirection: Axis.horizontal,
-        itemCount: _images.length,
-        itemBuilder: (_, index) => Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 5),
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                image: DecorationImage(
-                  image: AssetImage(
-                    _images.values.toList()[index],
-                  ),
-                  fit: BoxFit.cover,
+    return ListView.builder(
+      itemExtent: 100,
+      scrollDirection: Axis.horizontal,
+      itemCount: _images.length,
+      itemBuilder: (_, index) => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(bottom: 5),
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              image: DecorationImage(
+                image: AssetImage(
+                  _images.values.toList()[index],
+                
                 ),
+                // fit: BoxFit.cover,
               ),
             ),
-            LargeText(
-              text: _images.keys.toList()[index],
-              size: 12,
-              color: AppColors.mainTextColor,
-            ),
-          ],
-        ),
+          ),
+          LargeText(
+            text: _images.keys.toList()[index],
+            size: 12,
+            color: AppColors.mainTextColor,
+          ),
+        ],
       ),
     );
   }

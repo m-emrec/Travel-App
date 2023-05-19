@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/colors.dart';
-import 'package:travel_app/extensions/img_extendison.dart';
 import 'package:travel_app/extensions/sized_box_extension.dart';
 import 'package:travel_app/pages/navPages/my_page.dart';
-import 'package:travel_app/pages/navPages/search_page.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
-import 'package:travel_app/widgets/app_text.dart';
 
-import '../../logger.dart';
 import '../../widgets/explore_more_widgets.dart';
 import '../../widgets/places_tab_view.dart';
-
-enum Categories {
-  Places,
-  Inspiraton,
-  Emotions,
-}
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,10 +17,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   // int categorieController = 0;
 
-  var selectedCategory = Categories.Places;
-
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     TabController _controller =
         TabController(length: 3, vsync: this, initialIndex: 0);
     return Padding(
@@ -40,14 +29,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           //Spacing
-          24.ph(),
+          (size.height * 0.03).ph(),
           LargeText(text: "Discover"),
-          16.ph(),
+          (size.height * 0.03).ph(),
 
           ///Categories
           // Category Tabs
           SizedBox(
-            width: 250,
+            width: size.width * .7,
             height: 30,
             child: TabBar(
               labelPadding: EdgeInsets.zero,
@@ -73,7 +62,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           //Category Tab Views
           SizedBox(
             width: double.infinity,
-            height: 300,
+            height: size.height * 0.45,
             child: TabBarView(
               physics: const NeverScrollableScrollPhysics(),
               controller: _controller,
@@ -85,15 +74,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           // Spacing
-          32.ph(),
+          (size.height * 0.03).ph(), 
           // Explore more Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               LargeText(
-                  text: "Explore More",
-                  size: 16,
-                  color: AppColors.textColor2),
+                text: "Explore More",
+                size: 16,
+                color: AppColors.textColor2,
+              ),
               TextButton(
                 style: ButtonStyle(
                   foregroundColor:
@@ -105,9 +95,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ],
           ),
           // Spacing
-          16.ph(),
+          (size.height * 0.03).ph(),
           // ListView of explore more items.
-          ExploreMoreItems(),
+          SizedBox(
+            height: size.height * 0.1,
+            child: ExploreMoreItems(),
+          ),
         ],
       ),
     );
@@ -148,4 +141,3 @@ class _CiclePainter extends BoxPainter {
     canvas.drawCircle(_offset, radius, _paint);
   }
 }
-
